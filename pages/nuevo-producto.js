@@ -13,6 +13,7 @@ import {
 import useValidacion from "../hooks/useValidacion";
 import validarCrearProducto from "../validacion/validarCrearProducto";
 import { FirebaseContext } from "../firebase";
+import Error404 from "../components/layout/404";
 
 const STATE_INICIAL = {
   nombre: "",
@@ -44,6 +45,8 @@ const NuevoProducto = () => {
 
   const { usuario, firebase } = useContext(FirebaseContext);
 
+
+
   async function crearProducto() {
     if (!usuario) {
       return router.push("/login");
@@ -58,6 +61,11 @@ const NuevoProducto = () => {
       votos: 0,
       comentarios: [],
       creado: Date.now(),
+      creador: {
+        id: usuario.uid,
+        nombre: usuario.displayName
+      },
+      haVotado: []
     };
 
     firebase.db.collection("productos").add(producto);
@@ -77,9 +85,13 @@ const NuevoProducto = () => {
     setUrlImagen(await fileRef.getDownloadURL());
   };
 
+
+
   return (
     <div>
       <Layout>
+        {!usuario ? <Error404 /> : (
+
         <>
           <h1
             css={css`
@@ -98,7 +110,7 @@ const NuevoProducto = () => {
                 <input
                   type="text"
                   id="nombre"
-                  placeholder="Tu Nombre"
+                  placeholder="Nombre del Producto"
                   name="nombre"
                   value={nombre}
                   onChange={handleChange}
@@ -161,6 +173,7 @@ const NuevoProducto = () => {
             <InputSubmit type="submit" value="Crear Producto" />
           </Formulario>
         </>
+        )}
       </Layout>
     </div>
   );

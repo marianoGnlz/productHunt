@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "export": "next export"
   },
   "dependencies": {
     "@babel/core": "^7.13.14",
@@ -15,6 +16,7 @@
     "@emotion/react": "^11.1.5",
     "@emotion/styled": "^11.1.5",
     "babel-plugin-emotion": "^11.0.0",
+    "date-fns": "^2.20.1",
     "firebase": "^8.3.2",
     "firebase-admin": "^9.6.0",
     "next": "10.1.3",

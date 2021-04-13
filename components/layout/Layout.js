@@ -49,10 +49,12 @@ const Layout = (props) => {
           a {
               text-decoration: none;
           }
+          img {
+            max-width: 100%
+          }
         `}
       />
       <Head>
-          <html lang="es" />
           <title>Product Hunt Firebase y Next.JS</title>
           <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.min.css" integrity="sha512-Ojqt7YpXqYM6//AdMhErV3ot38rYgGF5QLJEwx7zhesjL9VqfhWiRz/dWK22hsn96RNz0CLl85+pg1P0BmfgVQ==" crossOrigin="anonymous" />
           <link rel="preconnect" href="https://fonts.gstatic.com" />
